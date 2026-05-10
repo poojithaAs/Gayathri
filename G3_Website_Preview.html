@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>G3 Parenting Simplified | Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1f1b16;
+    --soft:#5a534a;
+    --sage:#5c6b5a;
+    --taupe:#8b7e66;
+    --cream:#faf6ef;
+    --paper:#fffdf8;
+    --line:#e6dfd1;
+    --accent:#a18a5e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4,.serif{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:.01em;line-height:1.15}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* ===== Layout ===== */
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+  section{padding:96px 0}
+  section.tight{padding:64px 0}
+  .center{text-align:center}
+  .muted{color:var(--soft)}
+  .small{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);font-weight:500}
+
+  /* ===== Nav ===== */
+  nav.top{position:sticky;top:0;background:rgba(255,253,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+  nav.top .inner{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1200px;margin:0 auto}
+  nav.top .brand{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;letter-spacing:.06em}
+  nav.top ul{display:flex;gap:32px;list-style:none}
+  nav.top a{font-size:14px;color:var(--soft);font-weight:400}
+  nav.top a:hover{color:var(--ink)}
+
+  /* ===== Hero ===== */
+  .hero{padding:140px 0 120px;background:linear-gradient(180deg,#fffdf8 0%,#f6f0e3 100%);text-align:center}
+  .hero .small{margin-bottom:24px}
+  .hero h1{font-size:clamp(48px,7vw,84px);font-weight:500;color:var(--ink);margin-bottom:24px}
+  .hero .lede{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(22px,2.4vw,28px);color:var(--soft);max-width:780px;margin:0 auto 28px;line-height:1.4}
+  .hero p.body{max-width:680px;margin:0 auto 36px;font-size:17px;color:var(--soft)}
+  .btn{display:inline-block;padding:14px 32px;border:1px solid var(--ink);color:var(--ink);font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;transition:all .25s ease;background:transparent}
+  .btn:hover{background:var(--ink);color:var(--paper)}
+  .btn.solid{background:var(--ink);color:var(--paper)}
+  .btn.solid:hover{background:transparent;color:var(--ink)}
+
+  /* ===== Pillars ===== */
+  .pillars{background:var(--paper)}
+  .pillars .heading{text-align:center;margin-bottom:64px}
+  .pillars h2{font-size:42px;margin-bottom:14px}
+  .pillars .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+  .pillar{padding:40px 28px;border-top:1px solid var(--line);text-align:center}
+  .pillar h3{font-size:30px;margin-bottom:16px;color:var(--sage)}
+  .pillar p{color:var(--soft);font-size:16px;line-height:1.7}
+  .pillars .note{text-align:center;margin-top:48px;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--taupe);font-size:18px;letter-spacing:.04em}
+
+  /* ===== Cards ===== */
+  .services-section{background:var(--cream)}
+  .services-section .heading{text-align:center;margin-bottom:56px}
+  .services-section h2{font-size:42px;margin-bottom:14px}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+  .card{background:var(--paper);border:1px solid var(--line);padding:0;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s ease,box-shadow .35s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(31,27,22,.08)}
+  .card .img{height:200px;background:linear-gradient(135deg,#e8dfca,#d4c8a8);display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:'Cormorant Garamond',serif;font-size:32px;font-style:italic;letter-spacing:.04em}
+  .card .img.alt2{background:linear-gradient(135deg,#dbe1d4,#b9c4ad)}
+  .card .img.alt3{background:linear-gradient(135deg,#e6d8d2,#caaba0)}
+  .card .img.alt4{background:linear-gradient(135deg,#e9e2d2,#c9bda0)}
+  .card .body{padding:32px 28px;display:flex;flex-direction:column;flex:1}
+  .card h3{font-size:26px;margin-bottom:12px}
+  .card p{color:var(--soft);font-size:15px;line-height:1.7;flex:1;margin-bottom:24px}
+  .card .btn{align-self:flex-start;font-size:12px;padding:10px 22px}
+
+  /* ===== Quote ===== */
+  .quote-section{background:var(--paper);text-align:center}
+  .quote-section blockquote{max-width:760px;margin:0 auto;font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,34px);font-weight:400;color:var(--ink);line-height:1.4;font-style:italic}
+  .quote-section .qmark{font-size:72px;color:var(--taupe);font-family:'Cormorant Garamond',serif;line-height:1;margin-bottom:8px}
+  .quote-section .who{margin-top:32px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe)}
+
+  /* ===== Tips ===== */
+  .tips{background:var(--cream)}
+  .tips .heading{text-align:center;margin-bottom:64px}
+  .tips h2{font-size:42px;margin-bottom:14px}
+  .tip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .tip{padding:32px 28px;background:var(--paper);border:1px solid var(--line)}
+  .tip .num{font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--accent);font-style:italic;margin-bottom:10px}
+  .tip h4{font-size:22px;margin-bottom:12px}
+  .tip p{color:var(--soft);font-size:15px}
+
+  /* ===== Testimonials ===== */
+  .testi{background:var(--paper)}
+  .testi .heading{text-align:center;margin-bottom:64px}
+  .testi h2{font-size:42px;margin-bottom:14px}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .testi-card{padding:40px 32px;background:var(--cream);border:1px solid var(--line);position:relative}
+  .testi-card .qmark{font-family:'Cormorant Garamond',serif;font-size:72px;color:var(--taupe);line-height:.6;margin-bottom:14px;font-style:italic}
+  .testi-card p{color:var(--soft);font-size:15px;font-style:italic;line-height:1.75;margin-bottom:24px}
+  .testi-card .who{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);font-weight:500}
+
+  /* ===== Events ===== */
+  .events{background:var(--cream)}
+  .events .heading{text-align:center;margin-bottom:56px}
+  .events h2{font-size:42px;margin-bottom:14px}
+  .event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .event{background:var(--paper);border:1px solid var(--line)}
+  .event .img{height:160px;background:linear-gradient(135deg,#e8dfca,#caaba0)}
+  .event .img.b{background:linear-gradient(135deg,#dbe1d4,#a18a5e)}
+  .event .img.c{background:linear-gradient(135deg,#e9e2d2,#8b7e66)}
+  .event .body{padding:24px 24px 28px}
+  .event h4{font-size:22px;margin-bottom:8px}
+  .event p{font-size:14px;color:var(--soft)}
+
+  /* ===== Contact ===== */
+  .contact{background:var(--paper)}
+  .contact .heading{text-align:center;margin-bottom:48px}
+  .contact h2{font-size:42px;margin-bottom:14px}
+  .contact .lede{max-width:620px;margin:0 auto 8px;color:var(--soft);text-align:center;font-size:17px}
+  .form{max-width:620px;margin:48px auto 0;display:grid;gap:18px}
+  .form input,.form select,.form textarea{width:100%;padding:14px 16px;border:1px solid var(--line);background:var(--paper);font-family:inherit;font-size:15px;color:var(--ink);font-weight:300}
+  .form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--ink)}
+  .form textarea{min-height:120px;resize:vertical}
+  .form .row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .form .btn{justify-self:center;margin-top:8px;cursor:pointer;border:1px solid var(--ink)}
+
+  /* ===== Footer ===== */
+  footer{background:#1f1b16;color:#d8cfbb;padding:64px 0 40px;text-align:center}
+  footer .brand{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#fffdf8;letter-spacing:.04em;margin-bottom:8px}
+  footer .tag{font-style:italic;font-family:'Cormorant Garamond',serif;font-size:18px;color:#a18a5e;margin-bottom:24px}
+  footer ul{list-style:none;display:flex;gap:28px;justify-content:center;margin-bottom:32px;flex-wrap:wrap}
+  footer ul a{color:#d8cfbb;font-size:14px;letter-spacing:.04em}
+  footer .copy{font-size:12px;color:#8b7e66;letter-spacing:.06em}
+
+  .divider{border:0;border-top:1px solid var(--line);max-width:80px;margin:24px auto}
+
+  @media (max-width:900px){
+    .pillars .grid,.tip-grid,.testi-grid,.event-grid,.cards{grid-template-columns:1fr}
+    .form .row{grid-template-columns:1fr}
+    nav.top ul{display:none}
+    .hero{padding:80px 0 80px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="top">
+  <div class="inner">
+    <div class="brand">G3 PARENTING</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="small">G3 Parenting Simplified</div>
+    <h1>A Calmer Way<br/>To Parent.</h1>
+    <p class="lede">If you are tired of shouting, repeating, and feeling guilty after, you are in the right place.</p>
+    <p class="body">Your child’s behavior is not the problem. It is a signal. I help you understand it, decode it, and respond in a way that actually works.</p>
+    <a class="btn solid" href="#services">Explore Services</a>
+  </div>
+</section>
+
+<!-- Pillars -->
+<section class="pillars" id="about">
+  <div class="wrap">
+    <div class="heading">
+      <div class="small">The Foundation</div>
+      <h2>Calm. Connection. Consciousness.</h2>
+    </div>
+    <div class="grid">
+      <div class="pillar">
+        <h3>Calm</h3>
+        <p>A dysregulated parent cannot raise a regulated child. So we start with you. Your nervous system. Your reaction. Your pause. Calm is not a personality. It is a practice.</p>
+      </div>
+      <div class="pillar">
+        <h3>Connection</h3>
+        <p>Before correction, there has to be safety. When a child feels seen, they stop fighting you. They open up. They cooperate. Connection is what makes everything else work.</p>
+      </div>
+      <div class="pillar">
+        <h3>Consciousness</h3>
+        <p>We notice the patterns. We catch the triggers. We respond instead of repeat. Awareness is what turns a reactive home into a steady one.</p>
+      </div>
+    </div>
+    <div class="note">Practiced through Gentle, Grace, and Growth.</div>
+  </div>
+</section>
+
+<!-- Quote (her hook line) -->
+<section class="quote-section tight">
+  <div class="wrap">
+    <div class="qmark">“</div>
+    <blockquote>Your child’s behavior is not the problem. It is a signal. When you can read the signal, you can respond in a way that actually works.</blockquote>
+    <div class="who">Gayathri Vamsi</div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services-section" id="services">
+  <div class="wrap">
+    <div class="heading">
+      <div class="small">How We Can Work Together</div>
+      <h2>Programs and Workshops</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="img">Workshops</div>
+        <div class="body">
+          <h3>Parent Workshops</h3>
+          <p>Live, practical sessions on the moments that feel hardest at home. Screens. Backtalk. Power struggles. Big emotions. Each one leaves you with one thing you can use today.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img alt2">90 Day Program</div>
+        <div class="body">
+          <h3>90 Day Parent Program</h3>
+          <p>A premium coaching journey for families ready to stop reacting and finally understand what their child is really saying. Personal. Slow. Built around your child, not a template.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img alt3">Speaking</div>
+        <div class="body">
+          <h3>Speaking and Wellness Sessions</h3>
+          <p>For schools, preschools, parent communities, and organizations. Sessions that go deeper than tips and shift how the adults in a child’s life actually think, respond, and lead.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img alt4">Confidence Circle</div>
+        <div class="body">
+          <h3>Confidence Circle</h3>
+          <p>A small, intentional space for women who want trust in themselves, emotional steadiness, and clarity. Five women per cohort. In person in Dallas, or online.</p>
+          <a href="#" class="btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tips -->
+<section class="tips">
+  <div class="wrap">
+    <div class="heading">
+      <div class="small">Small Shifts. Big Difference.</div>
+      <h2>Parenting Tips</h2>
+    </div>
+    <div class="tip-grid">
+      <div class="tip">
+        <div class="num">01</div>
+        <h4>Pause Before Reacting</h4>
+        <p>Walk closer. Lower your voice. Say it once. Most moments do not need a fast response. They need a calmer one.</p>
+      </div>
+      <div class="tip">
+        <div class="num">02</div>
+        <h4>Name the Emotion</h4>
+        <p>Help your child put words to what they feel. When emotions get named, they get smaller. And they stop running the room.</p>
+      </div>
+      <div class="tip">
+        <div class="num">03</div>
+        <h4>Celebrate Small Wins</h4>
+        <p>The pause before the meltdown. The moment they tried again. Children grow in the small turns we choose to see.</p>
+      </div>
+      <div class="tip">
+        <div class="num">04</div>
+        <h4>Create Transition Time</h4>
+        <p>Most resistance is not defiance. It is a brain that needs more time. A simple, five more minutes, can change the whole shape of the day.</p>
+      </div>
+      <div class="tip">
+        <div class="num">05</div>
+        <h4>Set Loving Boundaries</h4>
+        <p>Boundaries are not punishments. They are the gentle lines that help your child feel safe. You can stay warm and still hold the line.</p>
+      </div>
+      <div class="tip">
+        <div class="num">06</div>
+        <h4>Encourage Emotion</h4>
+        <p>Make it easy for your child to come to you with the messy stuff. The goal is not to manage their feelings. It is to make sure they never feel alone in them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testi">
+  <div class="wrap">
+    <div class="heading">
+      <div class="small">Real Stories</div>
+      <h2>What Parents Are Saying</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="qmark">“</div>
+        <p>Hi Gayatri, we loved attending the power struggle session and the PDF you shared. I have been trying for a year to understand what a power struggle truly is. Nowhere across Instagram, Facebook, Google, YouTube, podcasts, or forums was it ever explained this clearly. Even three months of CBT did not help us. The way you explained it gave me goosebumps. Now we parents are practicing it, and I can already feel my son’s power struggles softening. Thank you for the clarity. It is changing our home.</p>
+        <div class="who">Workshop Attendee</div>
+      </div>
+      <div class="testi-card">
+        <div class="qmark">“</div>
+        <p>Hello Gayatri Mam, thank you so much for your guidance. I was so stressed about my child’s certain behavior patterns, but as soon as I talked to you, I understood how it starts from us parents. Your way of explaining things was so polite and spot on. I am working on the solutions you suggested with full awareness and look forward to positive outcomes.</p>
+        <div class="who">Abhayahastha, Coaching Client</div>
+      </div>
+      <div class="testi-card">
+        <div class="qmark">“</div>
+        <p>Since I began practicing gratitude every day, something within me has slowly shifted. Even on days when I feel unaccomplished, I remind myself, maybe this is not delay, but preparation. Maybe the universe is not denying me, it is shaping me. Instead of worrying about what I have not done yet, I choose to focus on how deeply I can prepare, how strong I can become, and how ready I will be when the right opportunity arrives.</p>
+        <div class="who">Confidence Circle Participant</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Events -->
+<section class="events">
+  <div class="wrap">
+    <div class="heading">
+      <div class="small">What Is Next</div>
+      <h2>Upcoming Events</h2>
+    </div>
+    <div class="event-grid">
+      <div class="event">
+        <div class="img"></div>
+        <div class="body">
+          <h4>The Confidence Circle Workshop</h4>
+          <p>A virtual session on emotional regulation, clarity, and steady leadership at home.</p>
+        </div>
+      </div>
+      <div class="event">
+        <div class="img b"></div>
+        <div class="body">
+          <h4>Connection Over Perfection</h4>
+          <p>An in person session on grace in the everyday moments of parenting.</p>
+        </div>
+      </div>
+      <div class="event">
+        <div class="img c"></div>
+        <div class="body">
+          <h4>90 Day Program Begins</h4>
+          <p>The next cohort opens soon. Limited spots, designed for depth, not scale.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="heading">
+      <div class="small">Reach Out</div>
+      <h2>Get In Touch</h2>
+      <hr class="divider"/>
+      <p class="lede">Tell me a little about your family. What is feeling hard. What you have already tried. What you are quietly hoping for. I read every note personally and reply.</p>
+    </div>
+    <form class="form" onsubmit="event.preventDefault();alert('This is a preview. Form not active.')">
+      <div class="row">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+      </div>
+      <div class="row">
+        <input type="tel" placeholder="Phone (optional)">
+        <select required>
+          <option value="">Inquiry Type</option>
+          <option>Workshops</option>
+          <option>Speaking Event</option>
+          <option>90 Day Program</option>
+          <option>Confidence Circle</option>
+          <option>General Questions</option>
+        </select>
+      </div>
+      <textarea placeholder="Tell me what you are looking for and what feels hard right now."></textarea>
+      <button class="btn solid" type="submit">Schedule a Call</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="brand">G3 Parenting Simplified</div>
+    <div class="tag">Calm. Connection. Consciousness.</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="copy">© 2026 G3 Parenting Simplified. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
